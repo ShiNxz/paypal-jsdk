@@ -1,0 +1,36 @@
+{
+	"name": "paypal-jsdk",
+	"version": "0.0.42",
+	"description": "A Node.js wrapper for PayPal payments and subscriptions.",
+	"main": "dist/index.mjs",
+	"module": "dist/index.esm",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsup index.ts --format cjs,esm --dts",
+		"lint": "tsc",
+		"go": "yarn lint && yarn build && yarn publish",
+		"dev": "tsx test.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ShiNxz/PaypalSDK.git"
+	},
+	"author": "Amir Eliz / ShiNxz",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ShiNxz/PaypalSDK/issues"
+	},
+	"homepage": "https://github.com/ShiNxz/PaypalSDK#readme",
+	"dependencies": {
+		"axios": "^1.4.0",
+		"dotenv": "^16.3.1",
+		"libphonenumber-js": "^1.10.37",
+		"tsx": "^4.7.0",
+		"zod": "^3.21.4"
+	},
+	"devDependencies": {
+		"@types/node": "^20.4.2",
+		"tsup": "^7.1.0",
+		"typescript": "^5.1.6"
+	}
+}

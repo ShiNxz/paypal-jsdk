@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"noEmit": true,
+		"rootDir": "./",
+		"outDir": "./dist",
+		// "isolatedModules": true,
+		// "allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"skipLibCheck": true
+	}
+}
