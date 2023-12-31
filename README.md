@@ -27,21 +27,23 @@
 
 ## Available APIs
 
--   [Shipment Tracking](#shipment-tracking)
--   [Catalog Products](#catalog-products)
--   [Disputes](#disputes)
--   [Identity](#identity)
--   [Invoices](#invoices)
--   [Orders](#orders)
--   [Partner Referrals](#partner-referrals)
--   [Payment Experience Web Profiles](#payment-experience-web-profiles)
--   [Payment Method Tokens](#payment-method-tokens)
--   [Payments](#payments)
--   [Payouts](#payouts)
--   [Referenced Payouts](#referenced-payouts)
--   [Subscriptions](#subscriptions)
--   [Transaction Search](#transaction-search)
--   [Webhooks Management](#webhooks-management)
+| API                                                                 | Description                                                                                                                                                               | Progress |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| [Shipment Tracking](#shipment-tracking)                             | Manage tracking information on your PayPal transactions                                                                                                                   | 0%       |
+| [Catalog Products](#catalog-products)                               | Create products, which are goods and services, to then use as product offerings in subscriptions.                                                                         | 0%       |
+| [Disputes](#disputes)                                               | Manage customer initiated disputes, chargebacks, or bank reversals.                                                                                                       | 0%       |
+| [Identity](#identity)                                               | Get user profile information and manage user account settings.                                                                                                            | 0%       |
+| [Invoices](#invoices)                                               | Create, send, and manage invoices, including tracking invoice payments.                                                                                                   | 0%       |
+| [Orders](#orders)                                                   | Create, update, retrieve, authorize, and capture orders.                                                                                                                  | 0%       |
+| [Partner Referrals](#partner-referrals)                             | Add PayPal seller accounts to your platform to connect your seller with PayPal before they accept a buyer payment.                                                        | 0%       |
+| [Payment Experience Web Profiles](#payment-experience-web-profiles) | Create web experience profiles to customize payment flow experiences from cart to buyer payment.                                                                          | 0%       |
+| [Payment Method Tokens](#payment-method-tokens)                     | The Payment Method Tokens API saves payment methods so payers don't have to enter details for future transactions.                                                        | 0%       |
+| [Payments](#payments)                                               | Use in conjunction with the Orders API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. | 0%       |
+| [Payouts](#payouts)                                                 | Make payments or send commissions, rebates, rewards, and general disbursements to multiple PayPal or Venmo recipients.                                                    | 0%       |
+| [Referenced Payouts](#referenced-payouts)                           | Disburse held funds captured in a delayed payment from a buyer to your seller.                                                                                            | 0%       |
+| [Subscriptions](#subscriptions)                                     | Create subscriptions that process recurring PayPal payments for physical or digital goods, or services.                                                                   | 0%       |
+| [Transaction Search](#transaction-search)                           | Get the transaction history for a PayPal account.                                                                                                                         | 0%       |
+| [Webhooks Management](#webhooks-management)                         | Subscribe to and manage your application's webhook events.                                                                                                                | 0%       |
 
 ## Preparations
 
@@ -128,65 +130,67 @@ const Router = (req, res) => {
 
 # Available APIs
 
-## Shipment Tracking
+### Shipment Tracking
 
 -   not available yet
 
-## Catalog Products
+### Catalog Products
 
 -   not available yet
 
-## Disputes
+### Disputes
 
 -   not available yet
 
-## Identity
+### Identity
 
 -   not available yet
 
-## Invoices
+### Invoices
 
 -   not available yet
 
-## Orders
+### Orders
 
 -   not available yet
 
-## Partner Referrals
+### Partner Referrals
 
 -   not available yet
 
-## Payment Experience Web Profiles
+### Payment Experience Web Profiles
 
 -   not available yet
 
-## Payment Method Tokens
+### Payment Method Tokens
 
 -   not available yet
 
-## Payments
+### Payments
 
 -   not available yet
 
-## Payouts
+### Payouts
 
 -   not available yet
 
-## Referenced Payouts
+### Referenced Payouts
 
 -   not available yet
 
-## Subscriptions
+### Subscriptions
 
 -   not available yet
 
-## Transaction Search
+### Transaction Search
 
 -   not available yet
 
-## Webhooks Management
+### Webhooks Management
 
 -   not available yet
+
+##
 
 # Moving Into Production
 
