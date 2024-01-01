@@ -1,6 +1,6 @@
 {
 	"name": "paypal-jsdk",
-	"version": "0.0.43",
+	"version": "0.0.44",
 	"description": "A Node.js wrapper for PayPal payments and subscriptions.",
 	"main": "dist/index.mjs",
 	"module": "dist/index.esm",
@@ -23,14 +23,13 @@
 	"homepage": "https://github.com/ShiNxz/PaypalSDK#readme",
 	"dependencies": {
 		"axios": "^1.4.0",
-		"dotenv": "^16.3.1",
-		"libphonenumber-js": "^1.10.37",
-		"tsx": "^4.7.0",
 		"zod": "^3.21.4"
 	},
 	"devDependencies": {
 		"@types/node": "^20.4.2",
+		"dotenv": "^16.3.1",
 		"tsup": "^7.1.0",
+		"tsx": "^4.7.0",
 		"typescript": "^5.1.6"
 	}
 }
