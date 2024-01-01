@@ -13,7 +13,9 @@
 -   😍 **Simple**: Straightforward and easy to use, covers multiple ways to achive your tasks and keep your code clean.
 -   🤞 **V1 & V2**: Includes support for both V1 and V2 of the PayPal REST APIs out of the box.
 -   📖 **Documentation**: Includes detailed documentation for all the APIs and functions.
--   📦 **Lightweight**: The package is only Xkb gzipped.
+-   ✨ **Validations**: Includes validation for all the APIs and functions, powered by [Zod](https://zod.dev)
+-   📦 **Modular**: Includes support for all the PayPal REST APIs, you can import only the parts you need into your app's bundle, this will reduce the bundle size and improve performance.
+-   ⛏️ **Error Handling**: Includes support for error handling, you can catch errors and handle them in your app.
 
 ## Table of Contents
 
@@ -125,7 +127,17 @@ const Router = (req, res) => {
 
 ## Create Subscription
 
--   todo
+Create any type of subscription using the Subscriptions API, in this tutorial we will create a subscription with a monthly billing cycle.
+
+```ts
+import Paypal from 'paypal-jsdk'
+
+await Paypal.init('clietId', 'clientSecret', 'SANDBOX')
+
+const Router = (req, res) => {
+	// Your router logic
+}
+```
 
 ## Create a Payment Request
 
@@ -311,7 +323,7 @@ const { paymentUrl } = await Subscriptions.createSubscription('P-XXXX')
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-const details = await Subscriptions.createSubscription('I-XXX')
+const details = await Subscriptions.showSubscriptionDetails('I-XXX')
 ```
 
 #### Revise plan or quantity of subscription
@@ -321,7 +333,7 @@ const details = await Subscriptions.createSubscription('I-XXX')
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-const { paymentUrl } = await Subscriptions.revisePlan('P-4LD7587879155310YMTUM7PA', {
+await Subscriptions.revisePlan('P-4LD7587879155310YMTUM7PA', {
 	...options,
 })
 ```
@@ -333,7 +345,7 @@ const { paymentUrl } = await Subscriptions.revisePlan('P-4LD7587879155310YMTUM7P
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-const { paymentUrl } = await Subscriptions.suspendSubscription('P-XXX', 'Reason...')
+await Subscriptions.suspendSubscription('P-XXX', 'Reason...')
 ```
 
 #### Cancel subscription
@@ -400,7 +412,9 @@ for more information about the Subscriptions API check the [official documentati
 
 # Moving Into Production
 
--   todo
+Change the mode to LIVE in your .env file (`process.env.PAYPAL_MODE = "LIVE"`) and use the live client id and secret.
+
+Thats it!
 
 ## Types Included
 
