@@ -29,8 +29,8 @@ export const description =
 
 export const examples: Example[] = [
 	{
-		description: 'Creates a subscription',
-		code: `const newSub = await CreateSubscription('P-XXX')`,
+		description: '',
+		code: ``,
 	},
 ]
 

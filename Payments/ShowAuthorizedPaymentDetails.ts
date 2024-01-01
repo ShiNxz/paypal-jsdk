@@ -16,11 +16,11 @@ const ShowAuthorizedPaymentDetails = async (authorizationId: string): Promise<Au
 	}
 }
 
-export const description = 'Activates a plan, by ID.'
+export const description = ''
 
 export const examples: Example[] = [
 	{
-		description: 'Activates a plan ID "P-XXX"',
+		description: '',
 		code: `ShowAuthorizedPaymentDetails()`,
 	},
 ]
