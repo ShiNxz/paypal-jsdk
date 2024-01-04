@@ -1,18 +1,18 @@
 {
 	"name": "paypal-jsdk",
-	"version": "0.0.54",
+	"version": "0.0.55",
 	"description": "A Node.js wrapper for PayPal payments and subscriptions.",
-	"main": "dist/index.mjs",
-	"module": "dist/index.esm",
-	"types": "dist/index.d.ts",
+	"main": "build/index.mjs",
+	"module": "build/index.esm",
+	"types": "build/index.d.ts",
 	"type": "module",
 	"files": [
-		"dist",
+		"build",
 		"README.md"
 	],
 	"exports": {
-		".": "./dist/index.js",
-		"./plans": "./dist/functions/Plans/index.js"
+		".": "./build/index.js",
+		"./plans": "./build/functions/Plans/index.js"
 	},
 	"scripts": {
 		"build-old": "tsup index.ts --format cjs,esm --dts",
