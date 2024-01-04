@@ -31,10 +31,10 @@ const UpdatePlanPricing = async (planId: string, newPricing: PricingSchemas): Pr
 	}
 }
 
-export const description =
+const description =
 	'Updates pricing for a plan. For example, you can update a regular billing cycle from $5 per month to $7 per month.'
 
-export const examples: Example[] = [
+const examples: Example[] = [
 	{
 		description: 'Creates a plan that defines pricing and billing cycle details for subscriptions.',
 		code: `await UpdatePlanPricing('P-4LD7587879155310YMTUM7PA', [

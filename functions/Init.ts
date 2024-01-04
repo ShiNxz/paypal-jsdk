@@ -1,4 +1,4 @@
-import config from './config'
+import config from '../config'
 
 const Init = (clientId: string, clientSecret: string, mode: 'LIVE' | 'SANDBOX') => {
 	config.clientId = clientId

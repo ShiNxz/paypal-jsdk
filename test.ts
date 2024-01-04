@@ -1,4 +1,4 @@
-import Init from './Init'
+import Init from './functions/Init'
 import dotenv from 'dotenv'
 import { Subscriptions } from './'
 

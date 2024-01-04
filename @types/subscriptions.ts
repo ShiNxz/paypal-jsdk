@@ -459,7 +459,7 @@ export interface CycleExecution {
 	total_cycles?: number
 }
 
-export interface CapturePayment {
+export interface CapturePaymentType {
 	/**
 	 * The reason or note for the subscription charge.
 	 */

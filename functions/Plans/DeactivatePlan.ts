@@ -12,9 +12,9 @@ const DeactivatePlan = async (planId: string): Promise<void> => {
 	}
 }
 
-export const description = 'Deactivates a plan, by ID.'
+const description = 'Deactivates a plan, by ID.'
 
-export const examples: Example[] = [
+const examples: Example[] = [
 	{
 		description: 'Deactivates a plan ID "P-XXX"',
 		code: `DeactivatePlan('P-XXX')`,

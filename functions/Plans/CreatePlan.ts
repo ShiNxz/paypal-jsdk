@@ -27,9 +27,9 @@ const CreatePlan = async (body: PlanBodyType): Promise<CreatedPlan> => {
 	}
 }
 
-export const description = 'Creates a plan that defines pricing and billing cycle details for subscriptions.'
+const description = 'Creates a plan that defines pricing and billing cycle details for subscriptions.'
 
-export const examples: Example[] = [
+const examples: Example[] = [
 	{
 		description: 'Creates a plan that defines pricing and billing cycle details for subscriptions.',
 		code: `CreatePlan({

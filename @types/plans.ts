@@ -2,7 +2,7 @@ import type { AmountPrice, Frequency, Link, Taxes } from '.'
 import type { PlansQuery as PlansQuerySchema } from '../schemas/Plans'
 import type { z } from 'zod'
 
-export interface ListPlans {
+export interface ListPlansType {
 	/**
 	 * An array of plans.
 	 */

@@ -19,12 +19,12 @@ export {
 }
 
 export default {
-	activateSubscription: ActivateSubscription,
-	cancelSubscription: CancelSubscription,
+	activate: ActivateSubscription,
+	cancel: CancelSubscription,
 	capturePayment: CapturePayment,
-	createSubscription: CreateSubscription,
+	create: CreateSubscription,
 	listTransactions: ListTransactions,
 	revisePlan: RevisePlan,
-	showSubscriptionDetails: ShowSubscriptionDetails,
-	suspendSubscription: SuspendSubscription,
+	show: ShowSubscriptionDetails,
+	suspend: SuspendSubscription,
 }

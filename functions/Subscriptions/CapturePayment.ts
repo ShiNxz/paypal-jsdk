@@ -1,5 +1,5 @@
 import type { Example } from '@/@types'
-import type { CapturePayment as CapturePaymentType } from '@/@types/subscriptions'
+import type { CapturePaymentType } from '@/@types/subscriptions'
 import { CapturePaymentBody } from '@/schemas/Subscriptions'
 import Paypal from '@/utils/Axios'
 

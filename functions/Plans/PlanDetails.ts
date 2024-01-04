@@ -15,9 +15,9 @@ const PlanDetails = async (planId: string): Promise<CreatedPlan> => {
 	}
 }
 
-export const description = 'Shows details for a plan, by ID.'
+const description = 'Shows details for a plan, by ID.'
 
-export const examples: Example[] = [
+const examples: Example[] = [
 	{
 		description: 'Shows details for the plan with ID "P-XXX"',
 		code: `PlanDetails('P-XXX')`,

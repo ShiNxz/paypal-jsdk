@@ -12,7 +12,6 @@
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
 		"skipLibCheck": true,
-		"outDir": "dist",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./*"]

@@ -1,4 +1,4 @@
-import type { ListPlans as ListPlansType, PlansQuery as PlansQueryType } from '@/@types/plans'
+import type { ListPlansType, PlansQuery as PlansQueryType } from '@/@types/plans'
 import type { Example } from '@/@types'
 import { PlansQuery } from '@/schemas/Plans'
 import Paypal from '@/utils/Axios'
@@ -20,9 +20,9 @@ const ListPlans = async (query?: PlansQueryType): Promise<ListPlansType> => {
 	}
 }
 
-export const description = 'Lists billing plans.'
+const description = 'Lists billing plans.'
 
-export const examples: Example[] = [
+const examples: Example[] = [
 	{
 		description: 'List all plans',
 		code: `const products = await ListProducts({ page: 1, page_size: 1, total_required: true })`,
