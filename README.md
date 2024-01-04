@@ -6,14 +6,14 @@
 
 ## Features
 
--   🗂 **Typed**: Include 100% detailed types for everything you will ever need [types included](#types-included)
+-   🗂 **Typed**: Include 100% detailed types for everything you will ever need, [types included](#types-included).
 -   🌳 **Tree-shakeable**: Only the parts you use will be imported into your app's bundle.
 -   🚀 **Fast**: Built with ES6 modules and functions.
 -   🛡 **Bulletproof**: Written in strict TypeScript and has 100% test coverage.
 -   😍 **Simple**: Straightforward and easy to use, covers multiple ways to achive your tasks and keep your code clean.
 -   🤞 **V1 & V2**: Includes support for both V1 and V2 of the PayPal REST APIs out of the box.
 -   📖 **Documentation**: Includes detailed documentation for all the APIs and functions.
--   ✨ **Validations**: Includes validation for all the APIs and functions, powered by [Zod](https://zod.dev)
+-   ✨ **Validations**: Includes validation for all the APIs and functions, powered by [Zod](https://zod.dev).
 -   📦 **Modular**: Includes support for all the PayPal REST APIs, you can import only the parts you need into your app's bundle, this will reduce the bundle size and improve performance.
 -   ⛏️ **Error Handling**: Includes support for error handling, you can catch errors and handle them in your app.
 
@@ -28,14 +28,14 @@
 ## Tutorials
 
 -   [Create a Payment Request](#create-a-payment-request)
--   [Create Subscription](#create-subscription)
+-   [Create Subscription Link](#create-subscription-link)
 
 ## Available APIs
 
 | API                                                                 | Description                                                                                                                                                               | Progress |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| [Shipment Tracking](#shipment-tracking)                             | Manage tracking information on your PayPal transactions                                                                                                                   | 0%       |
-| [Catalog Products](#catalog-products)                               | Create products, which are goods and services, to then use as product offerings in subscriptions.                                                                         | 0%       |
+| [Shipment Tracking](#shipment-tracking)                             | Manage tracking information on your PayPal transactions                                                                                                                   | 100%       |
+| [Catalog Products](#catalog-products)                               | Create products, which are goods and services, to then use as product offerings in subscriptions.                                                                         | 100%       |
 | [Disputes](#disputes)                                               | Manage customer initiated disputes, chargebacks, or bank reversals.                                                                                                       | 0%       |
 | [Identity](#identity)                                               | Get user profile information and manage user account settings.                                                                                                            | 0%       |
 | [Invoices](#invoices)                                               | Create, send, and manage invoices, including tracking invoice payments.                                                                                                   | 0%       |
@@ -125,7 +125,7 @@ const Router = (req, res) => {
 
 # Tutorials
 
-## Create Subscription
+## Create Subscription Link
 
 > Create any type of subscription using the Subscriptions API, in this tutorial we will create a catalog product, subscription plan with a monthly billing cycle and get a subscription link.
 

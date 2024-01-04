@@ -1,23 +1,23 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "esnext",
+		"module": "CommonJS",
 		"moduleResolution": "node",
 		"lib": ["ESNext"],
 		"noEmit": true,
 		"rootDir": "./",
 		"moduleDetection": "force",
-		"outDir": "./build",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
 		"skipLibCheck": true,
+		"outDir": "dist",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./*"],
+			"@/*": ["./*"]
 		}
 	},
 	"include": ["**/*.ts"],
-	"exclude": ["node_modules", "build"]
+	"exclude": ["node_modules", "dist"]
 }

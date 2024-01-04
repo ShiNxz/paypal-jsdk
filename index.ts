@@ -1,9 +1,11 @@
 import * as Types from './@types'
+export * as Types from './@types'
 import Config from './config'
 import Init from './Init'
 
 // Tracking
 import Tracking from './functions/Tracking'
+export * from './functions/Tracking'
 import AddTracking from './functions/Tracking/AddTracking'
 import EditTracking from './functions/Tracking/EditTracking'
 import ShowTrackingInformation from './functions/Tracking/ShowTracking'
@@ -15,13 +17,8 @@ import ListProducts from './functions/CatalogProducts/ListProducts'
 import ProductDetails from './functions/CatalogProducts/ProductDetails'
 
 // Plans
+export { default as Plans } from './functions/Plans'
 import Plans from './functions/Plans'
-import ActivatePlan from './functions/Plans/ActivatePlan'
-import CreatePlan from './functions/Plans/CreatePlan'
-import DeactivatePlan from './functions/Plans/DeactivatePlan'
-import ListPlans from './functions/Plans/ListPlans'
-import PlanDetails from './functions/Plans/PlanDetails'
-import UpdatePlanPricing from './functions/Plans/UpdatePlanPricing'
 
 // Subscriptions
 import Subscriptions from './functions/Subscriptions'
@@ -51,14 +48,6 @@ export {
 	CreateProduct,
 	ListProducts,
 	ProductDetails,
-	// Plans
-	Plans,
-	ActivatePlan,
-	CreatePlan,
-	DeactivatePlan,
-	ListPlans,
-	PlanDetails,
-	UpdatePlanPricing,
 	// Subscriptions
 	Subscriptions,
 	ActivateSubscription,
@@ -73,7 +62,6 @@ export {
 	Payments,
 	ShowAuthorizedPaymentDetails,
 	// Types
-	Types,
 }
 
 export default {

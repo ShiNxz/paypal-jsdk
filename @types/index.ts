@@ -1,5 +1,12 @@
 import type { Method } from 'axios'
 
+export * from './payments'
+export * from './plans'
+export * from './products'
+export * from './subscriptions'
+export * from './tracking'
+export * from './webhooks'
+
 export interface Frequency {
 	/**
 	 * The interval at which the subscription is charged or billed.

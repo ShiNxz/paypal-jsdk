@@ -8,10 +8,10 @@ import UpdatePlanPricing from './UpdatePlanPricing'
 export { ActivatePlan, CreatePlan, DeactivatePlan, ListPlans, PlanDetails, UpdatePlanPricing }
 
 export default {
-	activatePlan: ActivatePlan,
-	createPlan: CreatePlan,
-	deactivatePlan: DeactivatePlan,
-	listPlans: ListPlans,
-	planDetails: PlanDetails,
-	updatePlanPricing: UpdatePlanPricing,
+	activate: ActivatePlan,
+	create: CreatePlan,
+	deactivate: DeactivatePlan,
+	list: ListPlans,
+	details: PlanDetails,
+	updatePricing: UpdatePlanPricing,
 }

@@ -15,7 +15,8 @@
 		"./plans": "./dist/functions/Plans/index.js"
 	},
 	"scripts": {
-		"build": "tsup index.ts --format cjs,esm --dts",
+		"build-old": "tsup index.ts --format cjs,esm --dts",
+		"build": "tsc",
 		"lint": "tsc",
 		"go": "yarn lint && yarn build && yarn publish",
 		"dev": "tsx test.ts",
