@@ -1,6 +1,6 @@
 {
 	"name": "paypal-jsdk",
-	"version": "0.0.62",
+	"version": "0.0.63",
 	"description": "A Node.js wrapper for PayPal payments and subscriptions.",
 	"main": "build/index.js",
 	"module": "build/index.mjs",
