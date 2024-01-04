@@ -1,13 +1,11 @@
-import axios from 'axios'
 import GetPayPalAccessToken from './AccessToken'
 import config from '../config'
+import axios from 'axios'
 
-export const baseURL = config.mode === 'SANDBOX' ? 'https://api-m.sandbox.paypal.com/v1' : 'https://api-m.paypal.com/v1'
-export const baseURLV2 =
-	config.mode === 'SANDBOX' ? 'https://api-m.sandbox.paypal.com/v2' : 'https://api-m.paypal.com/v2'
+export const baseURL = config.mode === 'SANDBOX' ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com'
 
 const Paypal = axios.create({
-	baseURL,
+	baseURL: baseURL + '/v1',
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -15,7 +13,7 @@ const Paypal = axios.create({
 })
 
 export const PaypalV2 = axios.create({
-	baseURL: baseURLV2,
+	baseURL: baseURL + '/v2',
 	headers: {
 		'Content-Type': 'application/json',
 	},

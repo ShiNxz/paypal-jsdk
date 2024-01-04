@@ -1,5 +1,4 @@
-import type { AmountPrice } from '../types'
-import type { Link } from './General'
+import type { AmountPrice, Link } from '.'
 
 export interface AuthorizedPayment {
 	/**

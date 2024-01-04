@@ -1,7 +1,7 @@
-import type { Example } from '../types/General'
-import type { CreateSubscriptionBody as CreateSubscriptionBodyType, CreatedSubscription } from '../types/Subscriptions'
-import { CreateSubscriptionBody } from '../schemas/Subscriptions'
-import Paypal from '../utils/Axios'
+import type { Example } from '@/@types'
+import type { CreateSubscriptionBody as CreateSubscriptionBodyType, CreatedSubscription } from '@/@types/subscriptions'
+import { CreateSubscriptionBody } from '@/schemas/Subscriptions'
+import Paypal from '@/utils/Axios'
 
 /**
  * Creates a subscription.

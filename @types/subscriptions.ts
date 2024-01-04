@@ -1,6 +1,6 @@
-import type { AmountPrice, PlanBillingCycle } from '../types'
-import type { PaymentPreferences, PlanBody } from './Plans'
-import type { Link, Taxes } from './General'
+import type { PaymentPreferences, PlanBillingCycle, PlanBody } from './plans'
+import type { Address, AmountPrice } from '.'
+import type { Link, Taxes } from '.'
 
 export interface CreateSubscriptionBody {
 	/**
@@ -224,51 +224,6 @@ interface Card {
 	 * The billing address for this card. Supports only the address_line_1, address_line_2, admin_area_1, admin_area_2, postal_code, and country_code properties.
 	 */
 	billing_address?: Address
-}
-
-interface Address {
-	/**
-	 * The first line of the address.
-	 * For example, number or street. For example, 173 Drury Lane.
-	 * Required for data entry and compliance and risk checks.
-	 * Must contain the full address.
-	 */
-	address_line_1?: string
-	/**
-	 * The second line of the address.
-	 * For example, suite or apartment number.
-	 */
-	address_line_2?: string
-	/**
-	 * A city, town, or village.
-	 * Smaller than admin_area_level_1.
-	 */
-	admin_area_2?: string
-	/**
-	 * The highest level sub-division in a country, which is usually a province, state, or ISO-3166-2 subdivision.
-	 * Format for postal delivery.
-	 * For example, CA and not California. Value, by country, is:
-	 * - UK. A county.
-	 * - US. A state.
-	 * - Canada. A province.
-	 * - Japan. A prefecture.
-	 * - Switzerland. A kanton.
-	 */
-	admin_area_1?: string
-	/**
-	 * The postal code, which is the zip code or equivalent.
-	 * Typically required for countries with a postal code or an equivalent.
-	 * See postal code.
-	 * @see https://en.wikipedia.org/wiki/Postal_code
-	 */
-	postal_code?: string
-	/**
-	 * The two-character ISO 3166-1 code that identifies the country or region.
-	 * Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country.
-	 * Use the C2 country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.
-	 * @see https://developer.paypal.com/docs/integration/direct/rest/country-codes/
-	 */
-	country_code?: string
 }
 
 interface Name {

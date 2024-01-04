@@ -127,17 +127,73 @@ const Router = (req, res) => {
 
 ## Create Subscription
 
-Create any type of subscription using the Subscriptions API, in this tutorial we will create a subscription with a monthly billing cycle.
+> Create any type of subscription using the Subscriptions API, in this tutorial we will create a catalog product, subscription plan with a monthly billing cycle and get a subscription link.
+
+1. Create a product for the subscription plan, you can either do that from the [PayPal Dashboard](https://www.sandbox.paypal.com/billing/overview) or from the server.
+   note that you will need to create the product in both the [sandbox dashboard](https://www.sandbox.paypal.com/billing/overview) and the [live dashboard](https://www.paypal.com/billing/overview) in order to move into production.
+
+2. Create a plan for the subscription
 
 ```ts
-import Paypal from 'paypal-jsdk'
+import { Init } from 'paypal-jsdk'
+import { Products, Plans, Subscriptions } from 'paypal-jsdk'
 
-await Paypal.init('clietId', 'clientSecret', 'SANDBOX')
+await Init('clietId', 'clientSecret', 'SANDBOX')
 
+// POST /your-api/subscription
 const Router = (req, res) => {
-	// Your router logic
+	// ...
+
+	// 1. Create a product and get the id
+	const { id: product_id } = await Products.create({
+		id: '123456789',
+		name: 'Test Product',
+		type: 'DIGITAL',
+	})
+
+	/// 2. Create a plan and get the id
+	const { id: plan_id } = await Plans.createPlan({
+		product_id,
+		name: 'Monthly Plan',
+		description: 'Monthly Cycle Plan',
+		billing_cycles: [
+			{
+				frequency: {
+					interval_unit: 'MONTH',
+					interval_count: 1,
+				},
+				tenure_type: 'REGULAR',
+				sequence: 1,
+				pricing_scheme: {
+					fixed_price: {
+						value: '10.00',
+						currency_code: 'USD',
+					},
+				},
+			},
+		],
+		payment_preferences: {
+			setup_fee_failure_action: 'CANCEL',
+		},
+	})
 }
 ```
+
+3. Create a subscription and get the payment url
+
+```ts
+// GET /your-api/subscription
+const Router = (req, res) => {
+	// ...
+	
+	// 3. Create a subscription and get the payment url
+	const { paymentUrl } = await Subscriptions.createSubscription(product_id)
+	return paymentUrl
+	// ...
+}
+```
+
+> you can also create the plan through the [Sandbox PayPal Developer Portal](https://www.sandbox.paypal.com/billing/plans), or through the [Live PayPal Developer Portal](https://www.paypal.com/billing/plans).
 
 ## Create a Payment Request
 
@@ -183,7 +239,7 @@ const Router = (req, res) => {
 
 ### Payments
 
-Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the Orders API. For more information, see the PayPal Checkout Overview.
+> Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the Orders API. For more information, see the PayPal Checkout Overview.
 
 #### Create a Plan
 
@@ -207,7 +263,7 @@ for more information about the Payments API check the [official documentation](h
 
 ### Subscriptions
 
-You can use billing plans and subscriptions to create subscriptions that process recurring PayPal payments for physical or digital goods, or services. A plan includes pricing and billing cycle information that defines the amount and frequency of charge for a subscription. You can also define a fixed plan, such as a $5 basic plan or a volume- or graduated-based plan with pricing tiers based on the quantity purchased. For more information, see Subscriptions Overview.
+> You can use billing plans and subscriptions to create subscriptions that process recurring PayPal payments for physical or digital goods, or services. A plan includes pricing and billing cycle information that defines the amount and frequency of charge for a subscription. You can also define a fixed plan, such as a $5 basic plan or a volume- or graduated-based plan with pricing tiers based on the quantity purchased. For more information, see Subscriptions Overview.
 
 #### Create a Plan
 
@@ -420,6 +476,20 @@ Thats it!
 
 The package includes typescript support out of the box and detailed types for all the PayPal REST APIs requests and responses.
 <img src="assets/types.png" alt="types" />
+
+todo
+You can also import the types directly:
+
+```ts
+import type { Plans } from 'paypal-jsdk'
+
+const newPlan: Plans.Plan = await Plans.createPlan({
+	product_id: 'PROD-XXX',
+	name: 'Test Plan',
+	description: 'Test Plan',
+	...
+})
+```
 
 ## Contribution
 

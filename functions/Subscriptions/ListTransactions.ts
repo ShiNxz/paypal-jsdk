@@ -1,6 +1,6 @@
-import type { Example } from '../types/General'
-import type { ListParams, ListResponse } from '../types/Subscriptions'
-import Paypal from '../utils/Axios'
+import type { Example } from '@/@types'
+import type { ListParams, ListResponse } from '@/@types/subscriptions'
+import Paypal from '@/utils/Axios'
 
 /**
  * Lists transactions for a subscription.

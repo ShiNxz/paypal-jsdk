@@ -1,5 +1,5 @@
-import type { Example } from '../types/General'
-import Paypal from '../utils/Axios'
+import type { Example } from '@/@types'
+import Paypal from '@/utils/Axios'
 
 /**
  * Deactivates a plan, by ID.

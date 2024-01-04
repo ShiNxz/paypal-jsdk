@@ -1,11 +1,7 @@
-import type { Example } from '../types/General'
-import {
-	CreateSubscriptionBody as CreateSubscriptionBodyType,
-	CreatedSubscription,
-	ReviseSubscriptionBody,
-} from '../types/Subscriptions'
-import { CreateSubscriptionBody } from '../schemas/Subscriptions'
-import Paypal from '../utils/Axios'
+import type { Example } from '@/@types'
+import { CreatedSubscription, ReviseSubscriptionBody } from '@/@types/subscriptions'
+import { CreateSubscriptionBody } from '@/schemas/Subscriptions'
+import Paypal from '@/utils/Axios'
 
 /**
  * Updates the quantity of the product or service in a subscription.

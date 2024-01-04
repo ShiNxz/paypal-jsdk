@@ -1,6 +1,6 @@
-import type { Example } from '../types/General'
-import type { CreatedSubscription } from '../types/Subscriptions'
-import Paypal from '../utils/Axios'
+import type { Example } from '@/@types'
+import type { CreatedSubscription } from '@/@types/subscriptions'
+import Paypal from '@/utils/Axios'
 
 /**
  * Shows details for a subscription, by ID.

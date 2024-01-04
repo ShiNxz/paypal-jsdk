@@ -1,7 +1,7 @@
-import { CapturePaymentBody } from '../schemas/Subscriptions'
-import type { Example } from '../types/General'
-import type { CapturePayment as CapturePaymentType } from '../types/Subscriptions'
-import Paypal from '../utils/Axios'
+import type { Example } from '@/@types'
+import type { CapturePayment as CapturePaymentType } from '@/@types/subscriptions'
+import { CapturePaymentBody } from '@/schemas/Subscriptions'
+import Paypal from '@/utils/Axios'
 
 /**
  * Captures an authorized payment from the subscriber on the subscription.

@@ -1,8 +1,8 @@
-import type { CreatedPlan } from '../types/Plans'
-import type { Example } from '../types/General'
-import { PricingScheme } from '../schemas/Plans'
+import type { CreatedPlan } from '@/@types/plans'
+import type { Example } from '@/@types'
+import { PricingScheme } from '@/schemas/Plans'
 import { z } from 'zod'
-import Paypal from '../utils/Axios'
+import Paypal from '@/utils/Axios'
 
 const PricingSchemas = z.array(
 	z.object({

@@ -1,6 +1,6 @@
-import type { Example } from '../types/General'
-import type { AuthorizedPayment } from '../types/Payments'
-import Paypal, { PaypalV2 } from '../utils/Axios'
+import type { AuthorizedPayment } from '@/@types/payments'
+import type { Example } from '@/@types'
+import { PaypalV2 } from '@/utils/Axios'
 
 /**
  * Shows details for an authorized payment, by ID.

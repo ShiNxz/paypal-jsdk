@@ -1,7 +1,7 @@
-import type { CreatedPlan, PlanBody as PlanBodyType } from '../types/Plans'
-import type { Example } from '../types/General'
-import { PlanBody } from '../schemas/Plans'
-import Paypal from '../utils/Axios'
+import type { CreatedPlan, PlanBody as PlanBodyType } from '@/@types/plans'
+import type { Example } from '@/@types'
+import { PlanBody } from '@/schemas/Plans'
+import Paypal from '@/utils/Axios'
 
 /**
  * Creates a plan that defines pricing and billing cycle details for subscriptions.

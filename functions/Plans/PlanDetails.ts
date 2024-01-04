@@ -1,6 +1,6 @@
-import type { CreatedPlan } from '../types/Plans'
-import type { Example } from '../types/General'
-import Paypal from '../utils/Axios'
+import type { CreatedPlan } from '@/@types/plans'
+import type { Example } from '@/@types'
+import Paypal from '@/utils/Axios'
 
 /**
  * Shows details for a plan, by ID.
