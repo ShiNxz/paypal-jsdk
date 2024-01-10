@@ -1,4 +1,4 @@
-import type { CreatedOrder, ConfirmOrder } from '@/@types/orders'
+import type { CreatedOrder, ConfirmOrderBody } from '@/@types/orders'
 import { PaypalV2 } from '@/utils/Axios'
 
 /**
@@ -17,7 +17,7 @@ import { PaypalV2 } from '@/utils/Axios'
  * })
  * ```
  */
-const ConfirmOrder = async (orderId: string, body: ConfirmOrder): Promise<CreatedOrder> => {
+const ConfirmOrder = async (orderId: string, body: ConfirmOrderBody): Promise<CreatedOrder> => {
 	try {
 		const { data } = await PaypalV2.post<CreatedOrder>(`/checkout/orders/${orderId}/confirm-payment-source`, body)
 

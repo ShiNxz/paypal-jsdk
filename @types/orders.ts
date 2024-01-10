@@ -168,7 +168,7 @@ export interface CreatedOrder extends Order {
 	status?: OrderStatus
 }
 
-export interface ConfirmOrder {
+export interface ConfirmOrderBody {
 	/**
 	 * The instruction to process an order.
 	 * @optional
