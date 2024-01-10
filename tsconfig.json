@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "CommonJS",
+		"module": "ESNext",
 		"moduleResolution": "node",
 		"lib": ["ESNext"],
 		"noEmit": true,
@@ -18,5 +18,5 @@
 		}
 	},
 	"include": ["**/*.ts"],
-	"exclude": ["node_modules", "dist"]
+	"exclude": ["node_modules", "build", "dist"]
 }

@@ -1,8 +1,13 @@
-import type { Example } from '@/@types'
 import Paypal from '@/utils/Axios'
 
 /**
  * Activates a plan, by ID.
+ * @param planId The ID of the plan to activate.
+ *
+ * @example
+ * ```typescript
+ * await Plans.activate('P-XXX')
+ * ```
  */
 const ActivatePlan = async (planId: string): Promise<void> => {
 	try {
@@ -11,14 +16,5 @@ const ActivatePlan = async (planId: string): Promise<void> => {
 		throw error
 	}
 }
-
-const description = 'Activates a plan, by ID.'
-
-const examples: Example[] = [
-	{
-		description: 'Activates a plan ID "P-XXX"',
-		code: `ActivatePlan('P-XXX')`,
-	},
-]
 
 export default ActivatePlan

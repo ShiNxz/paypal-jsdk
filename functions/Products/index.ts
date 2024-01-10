@@ -7,5 +7,5 @@ export { CreateProduct, ListProducts, ProductDetails }
 export default {
 	create: CreateProduct,
 	list: ListProducts,
-	showDetails: ProductDetails,
+	details: ProductDetails,
 }

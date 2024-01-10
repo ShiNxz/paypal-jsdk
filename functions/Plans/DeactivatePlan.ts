@@ -1,8 +1,13 @@
-import type { Example } from '@/@types'
 import Paypal from '@/utils/Axios'
 
 /**
  * Deactivates a plan, by ID.
+ * @param planId The ID of the plan to deactivate.
+ *
+ * @example
+ * ```typescript
+ * await Plans.deactivate('P-XXX')
+ * ```
  */
 const DeactivatePlan = async (planId: string): Promise<void> => {
 	try {
@@ -11,14 +16,5 @@ const DeactivatePlan = async (planId: string): Promise<void> => {
 		throw error
 	}
 }
-
-const description = 'Deactivates a plan, by ID.'
-
-const examples: Example[] = [
-	{
-		description: 'Deactivates a plan ID "P-XXX"',
-		code: `DeactivatePlan('P-XXX')`,
-	},
-]
 
 export default DeactivatePlan

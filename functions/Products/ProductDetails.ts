@@ -1,9 +1,14 @@
-import type { Example } from '@/@types'
 import type { ProductResponse } from '@/@types/products'
 import Paypal from '@/utils/Axios'
 
 /**
  * Shows details for a product, by ID.
+ * @param productId The ID of the product to show details for.
+ * 
+ * @example
+ * ```typescript
+ * const product = await Products.details('P-XXX')
+ * ```
  */
 const ShowProductDetails = async (productId: string): Promise<ProductResponse> => {
 	try {
@@ -14,18 +19,5 @@ const ShowProductDetails = async (productId: string): Promise<ProductResponse> =
 		throw error
 	}
 }
-
-export const description = 'Shows details for a product, by ID.'
-
-export const examples: Example[] = [
-	{
-		description: '',
-		code: `const product = await CreateProduct({
-			id: '123456789',
-			name: 'Test Product',
-			type: 'DIGITAL',
-		})`,
-	},
-]
 
 export default ShowProductDetails

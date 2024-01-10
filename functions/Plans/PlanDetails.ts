@@ -1,9 +1,14 @@
 import type { CreatedPlan } from '@/@types/plans'
-import type { Example } from '@/@types'
 import Paypal from '@/utils/Axios'
 
 /**
  * Shows details for a plan, by ID.
+ * @param planId The ID of the plan to show details for.
+ *
+ * @example
+ * ```typescript
+ * const plan = await Plans.details('P-XXX')
+ * ```
  */
 const PlanDetails = async (planId: string): Promise<CreatedPlan> => {
 	try {
@@ -14,14 +19,5 @@ const PlanDetails = async (planId: string): Promise<CreatedPlan> => {
 		throw error
 	}
 }
-
-const description = 'Shows details for a plan, by ID.'
-
-const examples: Example[] = [
-	{
-		description: 'Shows details for the plan with ID "P-XXX"',
-		code: `PlanDetails('P-XXX')`,
-	},
-]
 
 export default PlanDetails

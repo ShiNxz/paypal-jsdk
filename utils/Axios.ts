@@ -22,7 +22,7 @@ export const PaypalV2 = axios.create({
 
 Paypal.interceptors.request.use(async (config) => {
 	try {
-		const token = await GetPayPalAccessToken('v1')
+		const token = await GetPayPalAccessToken()
 		config.headers.Authorization = `Bearer ${token}`
 
 		return config
@@ -34,8 +34,7 @@ Paypal.interceptors.request.use(async (config) => {
 
 PaypalV2.interceptors.request.use(async (config) => {
 	try {
-		const token = await GetPayPalAccessToken('v1')
-		console.log({ token })
+		const token = await GetPayPalAccessToken()
 		config.headers.Authorization = `Bearer ${token}`
 
 		return config

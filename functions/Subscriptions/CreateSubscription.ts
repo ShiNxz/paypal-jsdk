@@ -1,10 +1,17 @@
-import type { Example } from '@/@types'
 import type { CreateSubscriptionBody as CreateSubscriptionBodyType, CreatedSubscription } from '@/@types/subscriptions'
 import { CreateSubscriptionBody } from '@/schemas/Subscriptions'
 import Paypal from '@/utils/Axios'
 
 /**
  * Creates a subscription.
+ * @param plan_id The ID of the plan to subscribe to.
+ * @param options The request body.
+ *
+ * @example
+ * ```typescript
+ * const newSub = await Subscriptions.create('P-XXX')
+ * const { paymentUrl } = newSub
+ * ```
  */
 const CreateSubscription = async (
 	plan_id: string,
@@ -25,18 +32,5 @@ const CreateSubscription = async (
 		throw error
 	}
 }
-
-export const description = 'Creates a subscription.'
-
-export const examples: Example[] = [
-	{
-		description: 'Creates a subscription',
-		code: `const newSub = await CreateSubscription('P-XXX')`,
-	},
-	{
-		description: 'Creates a subscription with optional parameters and get the payment url',
-		code: `const { paymentUrl } = await CreateSubscription('P-4LD7587879155310YMTUM7PA')`,
-	},
-]
 
 export default CreateSubscription

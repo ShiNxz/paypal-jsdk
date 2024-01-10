@@ -3,10 +3,10 @@ import config from '../config'
 
 const baseURL = config.mode === 'SANDBOX' ? 'https://api-m.sandbox.paypal.com/' : 'https://api-m.paypal.com/'
 
-const GetPayPalAccessToken = async (version: 'v1' | 'v2') => {
+const GetPayPalAccessToken = async () => {
 	try {
 		const options = {
-			url: baseURL + version + '/oauth2/token',
+			url: baseURL + 'v1/oauth2/token',
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

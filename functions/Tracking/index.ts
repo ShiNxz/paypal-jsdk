@@ -7,5 +7,5 @@ export { AddTracking, EditTracking, ShowTrackingInformation }
 export default {
 	add: AddTracking,
 	edit: EditTracking,
-	showInformation: ShowTrackingInformation,
+	information: ShowTrackingInformation,
 }

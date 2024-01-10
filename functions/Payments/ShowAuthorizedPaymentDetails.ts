@@ -1,10 +1,14 @@
 import type { AuthorizedPayment } from '@/@types/payments'
-import type { Example } from '@/@types'
 import { PaypalV2 } from '@/utils/Axios'
 
 /**
  * Shows details for an authorized payment, by ID.
  * @param {String} authorizationId The ID of the authorized payment for which to show details.
+ *
+ * @example
+ * ```typescript
+ * const authorizedPayment = await Payments.showAuthorizedDetails('XXX')
+ * ```
  */
 const ShowAuthorizedPaymentDetails = async (authorizationId: string): Promise<AuthorizedPayment> => {
 	try {
@@ -15,14 +19,5 @@ const ShowAuthorizedPaymentDetails = async (authorizationId: string): Promise<Au
 		throw error
 	}
 }
-
-export const description = ''
-
-export const examples: Example[] = [
-	{
-		description: '',
-		code: `ShowAuthorizedPaymentDetails()`,
-	},
-]
 
 export default ShowAuthorizedPaymentDetails

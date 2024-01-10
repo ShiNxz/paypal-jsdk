@@ -1,5 +1,5 @@
 import type { PaymentPreferences, PlanBillingCycle, PlanBody } from './plans'
-import type { Address, AmountPrice } from '.'
+import type { Address, AmountPrice, Name, Phone } from '.'
 import type { Link, Taxes } from '.'
 
 export interface CreateSubscriptionBody {
@@ -45,26 +45,7 @@ export interface CreateSubscriptionBody {
 	 * The phone.phone_number supports only national_number.
 	 * @see https://www.paypal.com/cgi-bin/customerprofileweb?cmd=_profile-website-payments&_ga=2.70891984.1795084420.1703891260-1944583344.1698732461
 	 */
-	phone?: {
-		/**
-		 * The phone type.
-		 */
-		phone_type?: 'FAX' | 'HOME' | 'MOBILE' | 'OTHER' | 'PAGER'
-		/**
-		 * The phone number, in its canonical international E.164 numbering plan format.
-		 * Supports only the national_number property.
-		 * @see https://www.itu.int/rec/T-REC-E.164/en
-		 */
-		phone_number: {
-			/**
-			 * The national number, in its canonical international E.164 numbering plan format.
-			 * The combined length of the country calling code (CC) and the national number must not be greater than 15 digits.
-			 * The national number consists of a national destination code (NDC) and subscriber number (SN).
-			 * @see https://www.itu.int/rec/T-REC-E.164/en
-			 */
-			national_number: string
-		}
-	}
+	phone?: Phone
 	/**
 	 * The shipping details.
 	 */
@@ -224,20 +205,6 @@ interface Card {
 	 * The billing address for this card. Supports only the address_line_1, address_line_2, admin_area_1, admin_area_2, postal_code, and country_code properties.
 	 */
 	billing_address?: Address
-}
-
-interface Name {
-	/**
-	 * When the party is a person, the party's given, or first, name.
-	 */
-	given_name?: string
-	/**
-	 * When the party is a person, the party's surname or family name.
-	 * Also known as the last name.
-	 * Required when the party is a person.
-	 * Use also to store multiple surnames including the matronymic, or mother's, surname.
-	 */
-	surname?: string
 }
 
 /**

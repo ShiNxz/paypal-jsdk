@@ -34,12 +34,12 @@
 
 | API                                                                 | Description                                                                                                                                                               | Progress |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| [Shipment Tracking](#shipment-tracking)                             | Manage tracking information on your PayPal transactions                                                                                                                   | 100%       |
-| [Catalog Products](#catalog-products)                               | Create products, which are goods and services, to then use as product offerings in subscriptions.                                                                         | 100%       |
+| [Shipment Tracking](#shipment-tracking)                             | Manage tracking information on your PayPal transactions                                                                                                                   | 100%     |
+| [Catalog Products](#catalog-products)                               | Create products, which are goods and services, to then use as product offerings in subscriptions.                                                                         | 100%     |
 | [Disputes](#disputes)                                               | Manage customer initiated disputes, chargebacks, or bank reversals.                                                                                                       | 0%       |
 | [Identity](#identity)                                               | Get user profile information and manage user account settings.                                                                                                            | 0%       |
 | [Invoices](#invoices)                                               | Create, send, and manage invoices, including tracking invoice payments.                                                                                                   | 0%       |
-| [Orders](#orders)                                                   | Create, update, retrieve, authorize, and capture orders.                                                                                                                  | 0%       |
+| [Orders](#orders)                                                   | Create, update, retrieve, authorize, and capture orders.                                                                                                                  | 100%     |
 | [Partner Referrals](#partner-referrals)                             | Add PayPal seller accounts to your platform to connect your seller with PayPal before they accept a buyer payment.                                                        | 0%       |
 | [Payment Experience Web Profiles](#payment-experience-web-profiles) | Create web experience profiles to customize payment flow experiences from cart to buyer payment.                                                                          | 0%       |
 | [Payment Method Tokens](#payment-method-tokens)                     | The Payment Method Tokens API saves payment methods so payers don't have to enter details for future transactions.                                                        | 0%       |
@@ -48,7 +48,7 @@
 | [Referenced Payouts](#referenced-payouts)                           | Disburse held funds captured in a delayed payment from a buyer to your seller.                                                                                            | 0%       |
 | [Subscriptions](#subscriptions)                                     | Create subscriptions that process recurring PayPal payments for physical or digital goods, or services.                                                                   | 100%     |
 | [Transaction Search](#transaction-search)                           | Get the transaction history for a PayPal account.                                                                                                                         | 0%       |
-| [Webhooks Management](#webhooks-management)                         | Subscribe to and manage your application's webhook events.                                                                                                                | 0%       |
+| [Webhooks Management](#webhooks-management)                         | Subscribe to and manage your application's webhook events.                                                                                                                | 100%     |
 
 ## Preparations
 
@@ -83,7 +83,7 @@ Create a PayPal Developer Client & Authenticate with PayPal
 
 1. Head over to the Sandbox Webhooks section at the bottom of the page and create a new webhook
     - The webhook url should be the url of your app + something like /api/paypal/webhooks
-    - Choose these events: `Billing subscription activated, Billing subscription expired, Billing subscription payment failed, Billing subscription re-activated, Payment sale completed``
+    - Choose these events: `Billing subscription activated, Billing subscription expired, Billing subscription payment failed, Billing subscription re-activated, Payment sale completed`
 
 ## Getting Started
 
@@ -125,6 +125,10 @@ const Router = (req, res) => {
 
 # Tutorials
 
+## Create a Payment Request
+
+-   todo
+
 ## Create Subscription Link
 
 > Create any type of subscription using the Subscriptions API, in this tutorial we will create a catalog product, subscription plan with a monthly billing cycle and get a subscription link.
@@ -152,7 +156,7 @@ const Router = (req, res) => {
 	})
 
 	/// 2. Create a plan and get the id
-	const { id: plan_id } = await Plans.createPlan({
+	const { id: plan_id } = await Plans.create({
 		product_id,
 		name: 'Monthly Plan',
 		description: 'Monthly Cycle Plan',
@@ -185,9 +189,9 @@ const Router = (req, res) => {
 // GET /your-api/subscription
 const Router = (req, res) => {
 	// ...
-	
+
 	// 3. Create a subscription and get the payment url
-	const { paymentUrl } = await Subscriptions.createSubscription(product_id)
+	const { paymentUrl } = await Subscriptions.create(product_id)
 	return paymentUrl
 	// ...
 }
@@ -195,19 +199,100 @@ const Router = (req, res) => {
 
 > you can also create the plan through the [Sandbox PayPal Developer Portal](https://www.sandbox.paypal.com/billing/plans), or through the [Live PayPal Developer Portal](https://www.paypal.com/billing/plans).
 
-## Create a Payment Request
-
--   todo
-
 # Available APIs
 
 ### Shipment Tracking
 
--   not available yet
+> Manage tracking information on your PayPal transactions
+
+#### Add tracking information
+
+> Adds tracking information for a PayPal transaction.
+
+```ts
+import { Tracking } from 'paypal-jsdk'
+
+const example: Tracker = {
+	transaction_id: 'XXX',
+	notify_buyer: true,
+	shipment_direction: 'FORWARD',
+	status: 'SHIPPED',
+}
+
+await Tracking.add([example])
+```
+
+#### Edit tracking information
+
+> Update or cancel tracking information for PayPal transaction
+
+```ts
+import { Tracking } from 'paypal-jsdk'
+
+const options = {
+	transaction_id: 'XXX',
+	notify_buyer: true,
+	shipment_direction: 'FORWARD',
+	status: 'SHIPPED',
+}
+await Tracking.edit('tracker_id', options)
+```
+
+#### Show tracking information
+
+> Shows tracking information, by tracker ID, for a PayPal transaction.
+
+```ts
+import { Tracking } from 'paypal-jsdk'
+
+const information = await Tracking.information('XXX')
+```
+
+for more information about the Payments API check the [official documentation](https://developer.paypal.com/docs/api/tracking/v1/)
 
 ### Catalog Products
 
--   not available yet
+> Create products, which are goods and services, to then use as product offerings in subscriptions.
+
+#### Create a product
+
+> Creates a product.
+
+```ts
+import { Products } from 'paypal-jsdk'
+
+const product = await Products.create({
+	id: '123456789',
+	name: 'Test Product',
+	type: 'DIGITAL',
+})
+```
+
+#### List products
+
+> Lists products.
+
+```ts
+import { Products } from 'paypal-jsdk'
+
+const products = await Products.list({
+	page: 1,
+	page_size: 1,
+	total_required: true,
+})
+```
+
+#### Show product details
+
+> Shows details for a product, by ID.
+
+```ts
+import { Products } from 'paypal-jsdk'
+
+const product = await Products.details('P-XXX')
+```
+
+for more information about the Orders API check the [official documentation](https://developer.paypal.com/docs/api/catalog-products/v1)
 
 ### Disputes
 
@@ -223,7 +308,106 @@ const Router = (req, res) => {
 
 ### Orders
 
--   not available yet
+> Create, update, retrieve, authorize, and capture orders.
+
+#### Add tracking information
+
+> Adds tracking information for an order.
+
+```ts
+import { Orders } from 'paypal-jsdk'
+
+const order = await Orders.addTracking('XXX', {
+	capture_id: 'XXX',
+	tracking_number: 'XXX',
+	carrier: 'FEDEX',
+})
+```
+
+#### Authorize an order
+
+> Authorizes payment for an order.
+
+```ts
+import { Orders } from 'paypal-jsdk'
+
+const order = await Orders.authorizePayment('XXX')
+```
+
+#### Capture an order
+
+> Captures payment for an order.
+
+```ts
+import { Orders } from 'paypal-jsdk'
+
+const order = await Orders.capturePayment('XXX')
+```
+
+#### Confirm an order
+
+> Payer confirms their intent to pay for the the Order with the given payment source.
+
+```ts
+import { Orders } from 'paypal-jsdk'
+
+const order = await Orders.confirm('XXX', {
+	payment_source: {
+		paypal: {
+			email_address: 'XXX',
+		},
+	},
+})
+```
+
+#### Create an order
+
+> Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs.
+
+```ts
+import { Orders } from 'paypal-jsdk'
+
+const order = await Orders.create({
+	intent: 'CAPTURE',
+	purchase_units: [
+		{
+			amount: {
+				currency_code: 'USD',
+				value: '10.00',
+				breakdown: {
+					item_total: {
+						currency_code: 'USD',
+						value: '10.00',
+					},
+				},
+			},
+			items: [
+				{
+					name: 'Test Item',
+					quantity: '1',
+					unit_amount: {
+						currency_code: 'USD',
+						value: '10.00',
+					},
+					category: 'DIGITAL_GOODS',
+				},
+			],
+		},
+	],
+})
+```
+
+#### Show order details
+
+> Shows details for an order, by ID.
+
+```ts
+import { Orders } from 'paypal-jsdk'
+
+const order = await Orders.showDetails('XXX')
+```
+
+for more information about the Orders API check the [official documentation](https://developer.paypal.com/docs/api/orders/v2/)
 
 ### Partner Referrals
 
@@ -241,14 +425,14 @@ const Router = (req, res) => {
 
 > Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the Orders API. For more information, see the PayPal Checkout Overview.
 
-#### Create a Plan
+#### Show authorized payment details
 
-> Creates a plan that defines pricing and billing cycle details for subscriptions.
+> Shows details for an authorized payment, by ID.
 
 ```ts
 import { Payments } from 'paypal-jsdk'
 
-const payments = await Payments.showAuthorizedPaymentDetails('PAYID-XXXX')
+const payments = await Payments.showAuthorizedDetails('PAYID-XXXX')
 ```
 
 for more information about the Payments API check the [official documentation](https://developer.paypal.com/docs/api/payments/v2/)
@@ -272,7 +456,7 @@ for more information about the Payments API check the [official documentation](h
 ```ts
 import { Plans } from 'paypal-jsdk'
 
-const newPlan = await Plans.createPlan({
+const newPlan = await Plans.create({
 	product_id: 'PROD-XXX',
 	name: 'Test Plan',
 	description: 'Test Plan',
@@ -305,7 +489,7 @@ const newPlan = await Plans.createPlan({
 ```ts
 import { Plans } from 'paypal-jsdk'
 
-const plans = await Plans.listPlans({
+const plans = await Plans.list({
 	page_size: 10,
 	page: 1,
 	total_required: true,
@@ -319,7 +503,7 @@ const plans = await Plans.listPlans({
 ```ts
 import { Plans } from 'paypal-jsdk'
 
-const details = await Plans.planDetails('P-XXX')
+const details = await Plans.details('P-XXX')
 ```
 
 #### Activate plan
@@ -329,7 +513,7 @@ const details = await Plans.planDetails('P-XXX')
 ```ts
 import { Plans } from 'paypal-jsdk'
 
-await Plans.activatePlan('P-XXX')
+await Plans.activate('P-XXX')
 ```
 
 #### Deactivate plan
@@ -339,7 +523,7 @@ await Plans.activatePlan('P-XXX')
 ```ts
 import { Plans } from 'paypal-jsdk'
 
-await Plans.deactivatePlan('P-XXX')
+await Plans.deactivate('P-XXX')
 ```
 
 #### Update pricing
@@ -349,7 +533,7 @@ await Plans.deactivatePlan('P-XXX')
 ```ts
 import { Plans } from 'paypal-jsdk'
 
-await Plans.updatePlanPricing('P-4LD7587879155310YMTUM7PA', [
+await Plans.updatePricing('P-4LD7587879155310YMTUM7PA', [
 	{
 		billing_cycle_sequence: 1,
 		pricing_scheme: {
@@ -369,7 +553,7 @@ await Plans.updatePlanPricing('P-4LD7587879155310YMTUM7PA', [
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-const { paymentUrl } = await Subscriptions.createSubscription('P-XXXX')
+const { paymentUrl } = await Subscriptions.create('P-XXXX')
 ```
 
 #### Show subscription details
@@ -379,7 +563,7 @@ const { paymentUrl } = await Subscriptions.createSubscription('P-XXXX')
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-const details = await Subscriptions.showSubscriptionDetails('I-XXX')
+const details = await Subscriptions.showDetails('I-XXX')
 ```
 
 #### Revise plan or quantity of subscription
@@ -401,7 +585,7 @@ await Subscriptions.revisePlan('P-4LD7587879155310YMTUM7PA', {
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-await Subscriptions.suspendSubscription('P-XXX', 'Reason...')
+await Subscriptions.suspend('P-XXX', 'Reason...')
 ```
 
 #### Cancel subscription
@@ -411,7 +595,7 @@ await Subscriptions.suspendSubscription('P-XXX', 'Reason...')
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-await Subscriptions.cancelSubscription('P-XXX', 'Reason...')
+await Subscriptions.cancel('P-XXX', 'Reason...')
 ```
 
 #### Activate subscription
@@ -421,7 +605,7 @@ await Subscriptions.cancelSubscription('P-XXX', 'Reason...')
 ```ts
 import { Subscriptions } from 'paypal-jsdk'
 
-await Subscriptions.activateSubscription('P-XXX')
+await Subscriptions.activate('P-XXX')
 ```
 
 #### Capture authorized payment on subscription
@@ -462,13 +646,211 @@ for more information about the Subscriptions API check the [official documentati
 
 ### Webhooks Management
 
--   not available yet
+> Subscribe to and manage your application's webhook events.
 
-##
+#### List transactions for subscription
+
+> Subscribes your webhook listener to events.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const webhook = await Webhooks.create('https://example.com', ['BILLING.SUBSCRIPTION.CREATED'])
+```
+
+#### Create webhook lookup
+
+> Creates a webhook lookup.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const lookup = await Webhooks.createLookup()
+```
+
+#### Delete webhook
+
+> Deletes a webhook, by ID.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+await Webhooks.delete('XXX')
+```
+
+#### Delete webhook lookup
+
+> Deletes a webhook lookup, by ID.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+await Webhooks.deleteLookup('XXX')
+```
+
+#### Show webhook event notification details
+
+> Shows details for a webhooks event notification, by ID.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const eventNotifications = await Webooks.showEventNotificationDetails('WH-XXX')
+```
+
+#### List webhooks
+
+> Lists webhooks for an app.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const webhooks = await Webhooks.list()
+```
+
+#### List event notifications
+
+> Lists webhooks event notifications.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const eventNotifications = await Webhooks.listEventNotifications()
+```
+
+#### List available events
+
+> Lists available events to which any webhook can subscribe.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const events = await Webhooks.listAvailableEvents()
+```
+
+#### List webhook lookups
+
+> Lists all webhook lookups.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const lookups = await Webhooks.listLookups()
+```
+
+#### List webhook lookups
+
+> Lists all webhook lookups.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const lookups = await Webhooks.listLookups()
+```
+
+#### List webhook lookups
+
+> Lists all webhook lookups.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const events = await Webhooks.listEvents('8PT59735JN779430N')
+```
+
+#### Show webhook lookup details
+
+> Shows details for a webhook lookup, by ID.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const lookup = await Webhooks.lookupDetails('8PT59735JN779430N')
+```
+
+#### Resend webhook event notification
+
+> Resends a webhook event notification, by ID.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const eventNotifications = await Webhooks.resendEventNotification('WH-XXX', ['8PT59735JN779430N'])
+```
+
+#### Show detals
+
+> Shows details for a webhook, by ID.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const webhook = await Webhooks.showDetails('8PT59735JN779430N')
+```
+
+#### Simulate webhook event
+
+> Simulates a webhook event. In the JSON request body, specify a sample payload.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+const eventNotifications = await Webhooks.simulateEvent({
+	event_type: 'PAYMENT.CAPTURE.COMPLETED',
+})
+```
+
+#### Verify webhook signature
+
+> Verifies a webhook signature.
+
+```ts
+import { Webhooks } from 'paypal-jsdk'
+
+await Webhooks.verifySignature({
+	auth_algo: req.headers['paypal-auth-algo'],
+	cert_url: req.headers['paypal-cert-url'],
+	transmission_id: req.headers['paypal-transmission-id'],
+	transmission_sig: req.headers['paypal-transmission-sig'],
+	transmission_time: req.headers['paypal-transmission-time'],
+	webhook_id: '8PT59735JN779430N',
+	webhook_event: req.body,
+})
+```
+
+for more information about the Webhooks API check the [official documentation](https://developer.paypal.com/docs/api/webhooks/v1/)
+
+## Utilities
+
+> The package includes some utilities that you can use in your app.
+
+#### Get App Access Token
+
+> Get an access token for your app.
+
+```ts
+import { GetPayPalAccessToken } from 'paypal-jsdk'
+
+const token = await GetPayPalAccessToken()
+```
+
+#### Get PayPal Client
+
+> Get the PayPal for v1/v2 versions, it will also generate a token for every request.
+
+```ts
+import { PaypalV1, PaypalV2 } from 'paypal-jsdk'
+
+// Send a custom get request with the v1 API
+const request = await PaypalV1.get('https://api.sandbox.paypal.com/...')
+
+// Send a custom post request with the v2 API
+const request = await PaypalV2.post('https://api.sandbox.paypal.com/...', { ... })
+```
 
 # Moving Into Production
 
-Change the mode to LIVE in your .env file (`process.env.PAYPAL_MODE = "LIVE"`) and use the live client id and secret.
+Change the mode to LIVE in your .env file (`process.env.PAYPAL_MODE = "LIVE"`) and use the live client id and secret from the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/applications).
 
 Thats it!
 
@@ -481,13 +863,14 @@ todo
 You can also import the types directly:
 
 ```ts
-import type { Plans } from 'paypal-jsdk'
+import type { CreatedPlan } from 'paypal-jsdk'
+import { Plans } from 'paypal-jsdk'
 
-const newPlan: Plans.Plan = await Plans.createPlan({
+const newPlan: CreatedPlan = await Plans.create({
 	product_id: 'PROD-XXX',
 	name: 'Test Plan',
 	description: 'Test Plan',
-	...
+	// ...
 })
 ```
 

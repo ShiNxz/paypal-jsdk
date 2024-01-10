@@ -1,9 +1,18 @@
-import type { Example } from '@/@types'
 import type { Response, Query } from '@/@types/products'
 import Paypal from '@/utils/Axios'
 
 /**
  * Lists products.
+ * @param query The query parameters.
+ *
+ * @example
+ * ```typescript
+ * const products = await Products.list({
+ * 	page: 1,
+ * 	page_size: 1,
+ * 	total_required: true,
+ * })
+ * ```
  */
 const ListProducts = async (query?: Query): Promise<Response> => {
 	try {
@@ -16,18 +25,5 @@ const ListProducts = async (query?: Query): Promise<Response> => {
 		throw error
 	}
 }
-
-export const description = 'Lists products with the given query'
-
-export const examples: Example[] = [
-	{
-		description: '',
-		code: `const product = await CreateProduct({
-			id: '123456789',
-			name: 'Test Product',
-			type: 'DIGITAL',
-		})`,
-	},
-]
 
 export default ListProducts

@@ -25,6 +25,6 @@ export default {
 	create: CreateSubscription,
 	listTransactions: ListTransactions,
 	revisePlan: RevisePlan,
-	show: ShowSubscriptionDetails,
+	showDetails: ShowSubscriptionDetails,
 	suspend: SuspendSubscription,
 }

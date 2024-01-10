@@ -46,11 +46,6 @@ export interface AmountPrice {
 	value: string
 }
 
-export interface Example {
-	description: string
-	code: string
-}
-
 export interface Link {
 	/**
 	 * The complete target URL.
@@ -91,16 +86,19 @@ export interface Address {
 	 * For example, number or street. For example, 173 Drury Lane.
 	 * Required for data entry and compliance and risk checks.
 	 * Must contain the full address.
+	 * @optional
 	 */
 	address_line_1?: string
 	/**
 	 * The second line of the address.
 	 * For example, suite or apartment number.
+	 * @optional
 	 */
 	address_line_2?: string
 	/**
 	 * A city, town, or village.
 	 * Smaller than admin_area_level_1.
+	 * @optional
 	 */
 	admin_area_2?: string
 	/**
@@ -112,20 +110,56 @@ export interface Address {
 	 * - Canada. A province.
 	 * - Japan. A prefecture.
 	 * - Switzerland. A kanton.
+	 * @optional
 	 */
 	admin_area_1?: string
 	/**
 	 * The postal code, which is the zip code or equivalent.
 	 * Typically required for countries with a postal code or an equivalent.
-	 * See postal code.
-	 * @see https://en.wikipedia.org/wiki/Postal_code
+	 * See [postal code](https://en.wikipedia.org/wiki/Postal_code).
+	 * @optional
 	 */
 	postal_code?: string
 	/**
-	 * The two-character ISO 3166-1 code that identifies the country or region.
+	 * The [2-character ISO 3166-1 code](https://developer.paypal.com/docs/integration/direct/rest/country-codes/) that identifies the country or region.
 	 * Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country.
 	 * Use the C2 country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.
-	 * @see https://developer.paypal.com/docs/integration/direct/rest/country-codes/
+	 * @required
 	 */
-	country_code?: string
+	country_code: string
+}
+
+export interface Name {
+	/**
+	 * When the party is a person, the party's given, or first, name.
+	 */
+	given_name?: string
+	/**
+	 * When the party is a person, the party's surname or family name.
+	 * Also known as the last name.
+	 * Required when the party is a person.
+	 * Use also to store multiple surnames including the matronymic, or mother's, surname.
+	 */
+	surname?: string
+}
+
+export interface Phone {
+	/**
+	 * The phone type.
+	 */
+	phone_type?: 'FAX' | 'HOME' | 'MOBILE' | 'OTHER' | 'PAGER'
+	/**
+	 * The phone number, in its canonical international E.164 numbering plan format.
+	 * Supports only the national_number property.
+	 * @see https://www.itu.int/rec/T-REC-E.164/en
+	 */
+	phone_number: {
+		/**
+		 * The national number, in its canonical international E.164 numbering plan format.
+		 * The combined length of the country calling code (CC) and the national number must not be greater than 15 digits.
+		 * The national number consists of a national destination code (NDC) and subscriber number (SN).
+		 * @see https://www.itu.int/rec/T-REC-E.164/en
+		 */
+		national_number: string
+	}
 }

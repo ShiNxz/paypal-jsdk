@@ -1,10 +1,19 @@
 import type { ListPlansType, PlansQuery as PlansQueryType } from '@/@types/plans'
-import type { Example } from '@/@types'
 import { PlansQuery } from '@/schemas/Plans'
 import Paypal from '@/utils/Axios'
 
 /**
  * Lists billing plans.
+ * @param query The query parameters.
+ *
+ * @example
+ * ```typescript
+ * 		const plans = await Plans.list({
+ * 			page: 1,
+ * 			page_size: 1,
+ * 			total_required: true,
+ * 		})
+ * ```
  */
 const ListPlans = async (query?: PlansQueryType): Promise<ListPlansType> => {
 	try {
@@ -19,14 +28,5 @@ const ListPlans = async (query?: PlansQueryType): Promise<ListPlansType> => {
 		throw error
 	}
 }
-
-const description = 'Lists billing plans.'
-
-const examples: Example[] = [
-	{
-		description: 'List all plans',
-		code: `const products = await ListProducts({ page: 1, page_size: 1, total_required: true })`,
-	},
-]
 
 export default ListPlans

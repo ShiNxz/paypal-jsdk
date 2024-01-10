@@ -1,9 +1,15 @@
-import type { Example } from '@/@types'
 import type { CreatedSubscription } from '@/@types/subscriptions'
 import Paypal from '@/utils/Axios'
 
 /**
  * Shows details for a subscription, by ID.
+ * @param subId The ID of the subscription.
+ * @param params The query parameters to include in the request.
+ *
+ * @example
+ * ```typescript
+ * const details = await Subscriptions.showDetails('I-XXX')
+ * ```
  */
 const ShowSubscriptionDetails = async (
 	subId: string,
@@ -19,14 +25,5 @@ const ShowSubscriptionDetails = async (
 		throw error
 	}
 }
-
-export const description = 'Shows details for a subscription, by ID.'
-
-export const examples: Example[] = [
-	{
-		description: 'Shows details for a subscription, by ID.',
-		code: `const details = await ShowSubscriptionDetails('I-XXX')`,
-	},
-]
 
 export default ShowSubscriptionDetails

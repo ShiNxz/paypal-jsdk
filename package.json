@@ -1,6 +1,6 @@
 {
 	"name": "paypal-jsdk",
-	"version": "0.0.75",
+	"version": "1.0.0",
 	"description": "A Node.js wrapper for PayPal payments and subscriptions.",
 	"main": "build/index.js",
 	"module": "build/index.mjs",
@@ -10,7 +10,6 @@
 		"README.md"
 	],
 	"scripts": {
-		"build-old": "tsup index.ts --format cjs,esm --dts",
 		"build": "tsup",
 		"lint": "tsc",
 		"go": "yarn lint && yarn build && yarn publish",
