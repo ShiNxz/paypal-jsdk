@@ -43,7 +43,7 @@
 | [Partner Referrals](#partner-referrals)                             | Add PayPal seller accounts to your platform to connect your seller with PayPal before they accept a buyer payment.                                                        | 0%       |
 | [Payment Experience Web Profiles](#payment-experience-web-profiles) | Create web experience profiles to customize payment flow experiences from cart to buyer payment.                                                                          | 0%       |
 | [Payment Method Tokens](#payment-method-tokens)                     | The Payment Method Tokens API saves payment methods so payers don't have to enter details for future transactions.                                                        | 0%       |
-| [Payments](#payments)                                               | Use in conjunction with the Orders API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. | 10%      |
+| [Payments](#payments)                                               | Use in conjunction with the Orders API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. | 100%     |
 | [Payouts](#payouts)                                                 | Make payments or send commissions, rebates, rewards, and general disbursements to multiple PayPal or Venmo recipients.                                                    | 0%       |
 | [Referenced Payouts](#referenced-payouts)                           | Disburse held funds captured in a delayed payment from a buyer to your seller.                                                                                            | 0%       |
 | [Subscriptions](#subscriptions)                                     | Create subscriptions that process recurring PayPal payments for physical or digital goods, or services.                                                                   | 100%     |
@@ -432,7 +432,78 @@ for more information about the Orders API check the [official documentation](htt
 ```ts
 import { Payments } from 'paypal-jsdk'
 
-const payments = await Payments.showAuthorizedDetails('PAYID-XXXX')
+const payments = await Payments.details('XXX')
+```
+
+#### Show captured payment details
+
+> Shows details for a captured payment, by ID.
+
+```ts
+import { Payments } from 'paypal-jsdk'
+
+const payments = await Payments.capturedDetails('XXX')
+```
+
+#### Capture authorized payment
+
+> Captures an authorized payment, by ID.
+
+```ts
+import { Payments } from 'paypal-jsdk'
+
+const authorizedPayment = await Payments.capture('XXX', {
+	amount: {
+		currency_code: 'USD',
+		value: '100.00',
+	},
+	final_capture: true,
+})
+```
+
+#### Void authorized payment
+
+> Voids, or cancels, an authorized payment, by ID. You cannot void an authorized payment that has been fully captured.
+
+```ts
+import { Payments } from 'paypal-jsdk'
+
+await Payments.cancel('XXX')
+```
+
+#### Reauthorize authorized payment
+
+> Reauthorize authorized payment
+
+```ts
+import { Payments } from 'paypal-jsdk'
+
+const reauthorizedPayment = await Payments.reauthorize('XXX', {
+	currency_code: 'USD',
+	value: '100.00',
+})
+```
+
+#### Refund captured payment
+
+> Refunds a captured payment, by ID.
+> For a full refund, include an empty payload in the JSON request body.
+> For a partial refund, include an `amount` object in the JSON request body.
+
+```ts
+import { Payments } from 'paypal-jsdk'
+
+const refundDetails = await Payments.refundCaptured('XXX')
+```
+
+#### Shows details for a refund, by ID.
+
+> Shows details for a refund, by ID.
+
+```ts
+import { Payments } from 'paypal-jsdk'
+
+const refundDetails = await Payments.refundDetails('XXX')
 ```
 
 for more information about the Payments API check the [official documentation](https://developer.paypal.com/docs/api/payments/v2/)

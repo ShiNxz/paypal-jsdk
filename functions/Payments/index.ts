@@ -1,7 +1,27 @@
-import ShowAuthorizedPaymentDetails from './ShowAuthorizedPaymentDetails'
+import CapturePayment from './CapturePayment'
+import ReauthorizePayment from './ReauthorizePayment'
+import ShowRefundDetails from './RefundDetails'
+import RefundCapturedPayment from './RefundPayment'
+import CancelPayment from './CancelPayment'
+import ShowCapturedPaymentDetails from './ShowCapturedDetails'
+import ShowPaymentDetails from './ShowPaymentDetails'
 
-export { ShowAuthorizedPaymentDetails }
+export {
+	ShowPaymentDetails,
+	CapturePayment,
+	ReauthorizePayment,
+	ShowRefundDetails,
+	RefundCapturedPayment,
+	CancelPayment,
+	ShowCapturedPaymentDetails,
+}
 
 export default {
-	showAuthorizedDetails: ShowAuthorizedPaymentDetails,
+	details: ShowPaymentDetails,
+	capture: CapturePayment,
+	reauthorize: ReauthorizePayment,
+	refundDetails: ShowRefundDetails,
+	refundCaptured: RefundCapturedPayment,
+	capturedDetails: ShowCapturedPaymentDetails,
+	cancel: CancelPayment,
 }

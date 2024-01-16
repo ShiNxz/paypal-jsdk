@@ -7,10 +7,10 @@ import { PaypalV2 } from '@/utils/Axios'
  *
  * @example
  * ```typescript
- * const authorizedPayment = await Payments.showAuthorizedDetails('XXX')
+ * const authorizedPayment = await Payments.details('XXX')
  * ```
  */
-const ShowAuthorizedPaymentDetails = async (authorizationId: string): Promise<AuthorizedPayment> => {
+const ShowPaymentDetails = async (authorizationId: string): Promise<AuthorizedPayment> => {
 	try {
 		const { data } = await PaypalV2.get<AuthorizedPayment>(`/payments/authorizations/${authorizationId}`)
 
@@ -20,4 +20,4 @@ const ShowAuthorizedPaymentDetails = async (authorizationId: string): Promise<Au
 	}
 }
 
-export default ShowAuthorizedPaymentDetails
+export default ShowPaymentDetails
