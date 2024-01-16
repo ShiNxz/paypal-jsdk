@@ -19,7 +19,7 @@ import Paypal from '@/utils/Axios'
  * })
  * ```
  **/
-const CapturePayment = async (subId: string, options: CapturePaymentType): Promise<void> => {
+const CaptureSubPayment = async (subId: string, options: CapturePaymentType): Promise<void> => {
 	try {
 		const body = CapturePaymentBody.parse(options)
 
@@ -29,4 +29,4 @@ const CapturePayment = async (subId: string, options: CapturePaymentType): Promi
 	}
 }
 
-export default CapturePayment
+export default CaptureSubPayment

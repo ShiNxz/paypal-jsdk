@@ -1,6 +1,6 @@
 import ActivateSubscription from './ActivateSubscription'
 import CancelSubscription from './CancelSubscription'
-import CapturePayment from './CapturePayment'
+import CaptureSubPayment from './CapturePayment'
 import CreateSubscription from './CreateSubscription'
 import ListTransactions from './ListTransactions'
 import RevisePlan from './RevisePlan'
@@ -10,7 +10,7 @@ import SuspendSubscription from './SuspendSubscription'
 export {
 	ActivateSubscription,
 	CancelSubscription,
-	CapturePayment,
+	CaptureSubPayment,
 	CreateSubscription,
 	ListTransactions,
 	RevisePlan,
@@ -21,7 +21,7 @@ export {
 export default {
 	activate: ActivateSubscription,
 	cancel: CancelSubscription,
-	capturePayment: CapturePayment,
+	capturePayment: CaptureSubPayment,
 	create: CreateSubscription,
 	listTransactions: ListTransactions,
 	revisePlan: RevisePlan,
