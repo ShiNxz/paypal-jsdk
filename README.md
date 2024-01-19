@@ -913,10 +913,10 @@ const token = await GetPayPalAccessToken()
 import { PaypalV1, PaypalV2 } from 'paypal-jsdk'
 
 // Send a custom get request with the v1 API
-const request = await PaypalV1.get('https://api.sandbox.paypal.com/...')
+const request = await PaypalV1.get('/...')
 
 // Send a custom post request with the v2 API
-const request = await PaypalV2.post('https://api.sandbox.paypal.com/...', { ... })
+const request = await PaypalV2.post('/...', { ... })
 ```
 
 # Moving Into Production
