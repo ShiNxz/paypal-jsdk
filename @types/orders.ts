@@ -1,4 +1,4 @@
-import type { Address, AmountPrice, CardNetwork, Name, Phone } from '.'
+import type { Address, AmountPrice, CardNetwork, Link, Name, Phone } from '.'
 
 export interface Order {
 	/**
@@ -166,6 +166,8 @@ export interface CreatedOrder extends Order {
 	 * @optional
 	 */
 	status?: OrderStatus
+
+	links: Link[]
 }
 
 export interface ConfirmOrderBody {
