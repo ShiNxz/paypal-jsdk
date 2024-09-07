@@ -7,11 +7,7 @@ const config: Config = {
 	mode: (process.env.PAYPAL_MODE as Config['mode']) || 'LIVE',
 }
 
-export const getConfig = () => {
-	console.log({ paypal: config })
-
-	return config
-}
+export const getConfig = () => config
 
 export interface Config {
 	clientId: string

@@ -1,5 +1,7 @@
 import type { Order, CreatedOrder } from '@/@types/orders'
-import { PaypalV2 } from '@/utils/Axios'
+import { GetPayPalAccessToken } from '@/utils'
+import { Axios, baseURL, PaypalV2 } from '@/utils/Axios'
+import axios from 'axios'
 
 /**
  * Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs.
@@ -39,7 +41,7 @@ import { PaypalV2 } from '@/utils/Axios'
  */
 const CreateOrder = async (body: Order): Promise<CreatedOrder> => {
 	try {
-		const { data } = await PaypalV2.post<CreatedOrder>(`/checkout/orders`, body)
+		const { data } = await Axios<CreatedOrder>(`/v2/checkout/orders`, 'POST', body)
 
 		return data
 	} catch (error) {

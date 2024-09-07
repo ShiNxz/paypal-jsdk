@@ -1,6 +1,6 @@
 import { getConfig } from '../config'
 import GetPayPalAccessToken from './AccessToken'
-import axios from 'axios'
+import axios, { Method } from 'axios'
 
 export const baseURL = () =>
 	getConfig().mode === 'SANDBOX' ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com'
@@ -44,5 +44,18 @@ PaypalV2.interceptors.request.use(async (config) => {
 		return config
 	}
 })
+
+// Axios instance that always up to date
+export const Axios = async <T>(url: string, method: Method, body?: object) => {
+	const token = await GetPayPalAccessToken()
+	return await axios<T>(`${baseURL()}${url}`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json',
+		},
+		data: body,
+		method,
+	})
+}
 
 export default Paypal

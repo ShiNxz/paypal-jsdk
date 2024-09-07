@@ -1,5 +1,5 @@
 import type { CreatedOrder, AuthorizeOrder } from '@/@types/orders'
-import { PaypalV2 } from '@/utils/Axios'
+import { Axios } from '@/utils/Axios'
 
 /**
  * Captures payment for an order.
@@ -13,7 +13,7 @@ import { PaypalV2 } from '@/utils/Axios'
  */
 const CaptureOrderPayment = async (orderId: string, options?: AuthorizeOrder): Promise<CreatedOrder> => {
 	try {
-		const { data } = await PaypalV2.post<CreatedOrder>(`/checkout/orders/${orderId}/capture`, options)
+		const { data } = await Axios<CreatedOrder>(`/v2/checkout/orders/${orderId}/capture`, 'POST', options)
 
 		return data
 	} catch (error) {

@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { getConfig } from '../config'
+import axios from 'axios'
 
 const baseURL = () =>
 	getConfig().mode === 'SANDBOX' ? 'https://api-m.sandbox.paypal.com/' : 'https://api-m.paypal.com/'
